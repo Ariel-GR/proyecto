@@ -4,7 +4,7 @@
  */
 package almundo.com;
 
-import static almundo.com.VistaConsola.mostrarTexto;
+import static almundo.com.VistaConsola.*;
 
 /**
  *
@@ -16,8 +16,17 @@ public class VerificarDato {
         boolean validar = (dato.equals(""));
 
         if (validar) {
-            mostrarTexto("\n***Sean ingresado datos vacios ! ! !***\n"
-                    + "Por favor ingrese nuevamente\n");
+            mostrarTexto("\n***Sean ingresado datos vacios ! ! !***\n");
+        }
+        return validar;
+    }
+    
+    public static boolean validarIngreso(int dato){
+        boolean validar = false;
+
+        if (dato == 0) {
+            mostrarTexto("\n***el valor no puede ser 0***\n");
+            validar = true;
         }
         return validar;
     }

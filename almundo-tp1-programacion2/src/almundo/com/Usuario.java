@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Ariel Risoluto.
  */
-public abstract class Persona{
+public abstract class Usuario{
     String nombre;
     String apellido;
     String id_user;
@@ -20,7 +20,7 @@ public abstract class Persona{
     String mail;
     Date fechaDeAlta;
 
-    public Persona(String nombre,String apellido, String id_user, String Password, int Dni, String mail, String fecha) throws ParseException {
+    public Usuario(String nombre,String apellido, String id_user, String Password, int Dni, String mail, String fecha) throws ParseException {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id_user = id_user;
@@ -60,10 +60,11 @@ public abstract class Persona{
     }
     
     
-    public abstract boolean inciarSession(Sistema sistema);
+    public abstract boolean inciarSesion(BaseDeDatos baseDeDatos);
+    
     
     public boolean buscarCredenciales(String credenciales){
         return credenciales.equals(id_user+":"+password);
     }
-    
+
 }

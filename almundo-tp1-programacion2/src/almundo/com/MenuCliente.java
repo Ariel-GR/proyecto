@@ -8,6 +8,6 @@ package almundo.com;
  *
  * @author Ariel Risoluto.
  */
-public interface UsuarioAltaBajaMod {
-    public abstract void administrarPersona(Sistema sitema);
+public interface MenuCliente {
+    public void menu(BaseDeDatos baseDeDatos);
 }

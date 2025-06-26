@@ -4,10 +4,34 @@
  */
 package almundo.com;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ariel Risoluto.
  */
-class Sucursal {
+public class Sucursal {
+    
+    private String codSucursal;
+    private String direccion;
+    private int telefono;
+
+    public Sucursal(String codSucursal, String direccion, int telefono) {
+        this.codSucursal = codSucursal;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    public String getCodSucursal() {
+        return codSucursal;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
     
 }

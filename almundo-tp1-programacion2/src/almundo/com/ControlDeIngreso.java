@@ -15,18 +15,16 @@ public class ControlDeIngreso {
     private String pass;
     private boolean validar = true;
     
-    Sistema s = new Sistema();
+    BaseDeDatos bd = new BaseDeDatos();
    
     public void ejecutar(){
 
-        
-        
         try{
             
             mostrarTexto("Bienvenido al sistema de Almundo.com");
-            s.getPersona().add(new Administrador("Juan", "Pérez", "Jperez", "1234pass", 12345678, "juan@example.com", "05/03/1990"));
-            s.getPersona().add(new Vendedor("Lucía", "Martínez", "Lmartinez", "ventapass", 23456789, "lucia@example.com", "10/05/1979"));
-            s.getPersona().add(new Cliente("Andrés", "Ramírez", "Aramirez", "comprapass", 34567890, "andres@example.com","22/03/2000"));
+            bd.getPersona().add(new Administrador("Juan", "Pérez", "Jperez", "1234pass", 12345678, "juan@example.com", "05/03/1990"));
+            bd.getPersona().add(new Vendedor("Lucía", "Martínez", "Lmartinez", "ventapass", 23456789, "lucia@example.com", "10/05/1979"));
+            bd.getPersona().add(new Cliente("Andrés", "Ramírez", "Aramirez", "comprapass", 34567890, "andres@example.com","22/03/2000"));
             
             while(validar){
                 do {
@@ -35,17 +33,16 @@ public class ControlDeIngreso {
 
                 }while(validarIngreso(user) || validarIngreso(pass));
             
-                Persona p = s.buscarUsuario(user+":"+pass);
+                Usuario p = bd.verificarCrdenciales(user+":"+pass);
             
                 if(p == null){
-                    mostrarTexto("Usuario no encontrado");
+                    mostrarTexto("---LAS CREDENCIALES SON INCORRECTAS---");
                 }else{
-                    validar = p.inciarSession(s);
+                    validar = p.inciarSesion(bd);
                 }
             
             }
             mostrarTexto("programa terminado !!!");
-            
             
         } catch (Exception e) {
         }

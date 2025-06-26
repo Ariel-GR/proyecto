@@ -42,4 +42,7 @@ public class VistaConsola{
     public static void mostrarTexto(String texto) {
         System.out.println(texto);
     }
+    public static void mostrarTexto(int num) {
+        System.out.println(num);
+    }
 }
