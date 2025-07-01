@@ -12,7 +12,7 @@ public class ConsultaCliente implements MenuCliente {
 
     @Override
     public void menu(BaseDeDatos baseDeDatos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
 

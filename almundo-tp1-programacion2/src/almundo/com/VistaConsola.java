@@ -45,4 +45,15 @@ public class VistaConsola{
     public static void mostrarTexto(int num) {
         System.out.println(num);
     }
+    
+    public static boolean validarSiNo(String texto){ 
+        String opc = leerString(texto);
+        opc = opc.toLowerCase();
+        
+        while (!opc.equals("si") && !opc.equals("no")) {
+            opc = leerString("***Por favor ingreses solo si o no***");
+        }
+        return opc.equals("si");
+  
+    }
 }

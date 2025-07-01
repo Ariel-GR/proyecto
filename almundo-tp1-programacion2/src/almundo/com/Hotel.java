@@ -4,32 +4,32 @@
  */
 package almundo.com;
 
-import java.util.ArrayList;
+import static almundo.com.VistaConsola.*;
 
 /**
  *
  * @author Ariel Risoluto.
  */
 public class Hotel extends Servicio{
-    
-    
+
     private String codHotel;
     private String direccion;
     private int telefono;
     private String email;
     private int plazasDisponibles;
-    private String tipoPension;
-    private ArrayList<habitacion> habitacion;
 
-    public Hotel(String codHotel, String direccion, int telefono, String email, int plazasDisponibles, String tipoPension, String tipoDeServicio, String nombreEmpresa) {
-        super(tipoDeServicio, nombreEmpresa);
+    public Hotel(String codHotel, String direccion, int telefono, String email, int plazasDisponibles, String tipoDeServicio, String nombreEmpresa,String idServicio) {
+        super(tipoDeServicio, nombreEmpresa,idServicio);
         this.codHotel = codHotel;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
         this.plazasDisponibles = plazasDisponibles;
-        this.tipoPension = tipoPension;
-        habitacion = new ArrayList<habitacion>();
+    }
+    
+     public Hotel(String tipoDeServicio,String idServio){
+
+            super(tipoDeServicio,idServio);
     }
 
     public String getCodHotel() {
@@ -51,18 +51,14 @@ public class Hotel extends Servicio{
     public int getPlazasDisponibles() {
         return plazasDisponibles;
     }
-
-    public String getTipoPension() {
-        return tipoPension;
-    }
-
-    public ArrayList<habitacion> getHabitacion() {
-        return habitacion;
-    }
-            
+           
     @Override
     public void mostrarServicio() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        mostrarTexto(toString());
+    }
+    
+    public void modificarPlazas(int cantidad){
+        plazasDisponibles -= cantidad;
     }
     
 }

@@ -5,8 +5,7 @@
 package almundo.com;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 /**
  *
  * @author Ariel Risoluto.
@@ -18,17 +17,14 @@ public abstract class Usuario{
     String password;
     int dni;
     String mail;
-    Date fechaDeAlta;
 
-    public Usuario(String nombre,String apellido, String id_user, String Password, int Dni, String mail, String fecha) throws ParseException {
+    public Usuario(String nombre,String apellido, String id_user, String Password, int Dni, String mail) throws ParseException {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id_user = id_user;
         this.password = Password;
         this.dni = Dni;
         this.mail = mail;
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        this.fechaDeAlta = formato.parse(fecha);
     }
 
     public String getNombre() {
@@ -54,17 +50,23 @@ public abstract class Usuario{
     public String getMail() {
         return mail;
     }
-
-    public Date getFecha() {
-        return fechaDeAlta;
-    }
     
-    
-    public abstract boolean inciarSesion(BaseDeDatos baseDeDatos);
-    
+    public abstract boolean inciarSesion(BaseDeDatos baseDeDatos,Usuario usuarioActul);
     
     public boolean buscarCredenciales(String credenciales){
         return credenciales.equals(id_user+":"+password);
+    }
+
+    @Override
+    public String toString() {
+        
+        return "Usuario{\n" +
+            "   - nombre: " + nombre + "\n" +
+            "   - apellido: " + apellido + "\n" +
+            "   - id_user: " + id_user + "\n" +
+            "   - dni: " + dni +
+            "   - mail: " + mail + "\n" +
+            "}";
     }
 
 }

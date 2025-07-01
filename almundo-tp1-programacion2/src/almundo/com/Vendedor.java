@@ -5,28 +5,63 @@
 package almundo.com;
 
 import java.text.ParseException;
-import java.util.Date;
 import static almundo.com.VistaConsola.*;
 /**
  *
  * @author Ariel Risoluto.
  */
 public class Vendedor extends Usuario implements MenuVendedor{
-
-    public Vendedor(String nombre, String apellido, String id_user, String Password, int Dni, String mail, String fecha) throws ParseException {
-        super(nombre, apellido, id_user, Password, Dni, mail, fecha);
+    
+    private Usuario usuarioActul;
+    
+    public Vendedor(String nombre, String apellido, String id_user, String Password, int Dni, String mail) throws ParseException {
+        super(nombre, apellido, id_user, Password, Dni, mail);
     }
 
 
     @Override
-    public boolean inciarSesion(BaseDeDatos sistema) {
-        mostrarTexto("hola VENDEDOR ");
+    public boolean inciarSesion(BaseDeDatos baseDeDatos,Usuario usuarioActul) {
+        this.usuarioActul = usuarioActul;
+        mostrarTexto("Bienvenido Vendedor: " + usuarioActul.nombre);
+        menu(baseDeDatos);
+
         return false;
     }
 
     @Override
     public void menu(BaseDeDatos baseDeDatos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int opcion = 0;
+        boolean entrada = true;
+
+        while (entrada) {
+            opcion = leerNro(
+                    "1) ABM DE CLIENTES\n"
+                    + "5) VER DATOS DE MI USUARIO\n"
+                    + "0) CERRAR SESION\n"
+                    + "Ingrese el nro de opcion deseada: ");
+
+            switch (opcion) {
+
+                case 2:
+                    vender(new AMBCliente(), baseDeDatos);
+                    break;
+                    
+                case 5:
+                    baseDeDatos.mostrarDatosUsuario(usuarioActul);
+                    break;
+
+                case 0:
+                default:
+                    mostrarTexto("\n--Se ha cerrado la sesion--\n");
+                    entrada = false;
+                    break;
+            }
+
+        }
+    }
+    
+    private void vender(MenuVendedor trabajar, BaseDeDatos baseDeDatos) {
+        trabajar.menu(baseDeDatos);
     }
 
 

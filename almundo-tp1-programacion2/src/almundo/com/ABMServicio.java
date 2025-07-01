@@ -5,7 +5,6 @@
 package almundo.com;
 import static almundo.com.VerificarDato.*;
 import static almundo.com.VistaConsola.*;
-import java.text.ParseException;
 /**
  *
  * @author Ariel Risoluto.
@@ -16,9 +15,7 @@ public class ABMServicio implements MenuAdministrador {
     public void menu(BaseDeDatos baseDeDatos) {
         int opcion;
         
-        opcion = leerNro("1) ALTA DE USUARIO\n"+
-                "2) BAJA DE USUARIO\n"+
-                "3) ALTA DE MODIFICACION\n"+
+        opcion = leerNro("1) ALTA DE VUELO\n"+
                 "--SALIR 0--\n"+
                 "Igrese el nro de la opcion deseada:");
         
@@ -31,7 +28,6 @@ public class ABMServicio implements MenuAdministrador {
     }
     //COMPLETAR . . . . . . . .  .
     private void altaServicioVuelo(BaseDeDatos baseDeDatos) {
-       int opc1;
         int opc2;
         boolean validar = false;
         boolean comprobarUsuario = false;
@@ -39,7 +35,6 @@ public class ABMServicio implements MenuAdministrador {
         String tipoDeServicio = "";
         String origen = "";
         String destino = "";
-        String fechaDeVuelo = "";
         int plazasTotales = 0;
 
         do {
@@ -56,14 +51,21 @@ public class ABMServicio implements MenuAdministrador {
                     } catch (Exception e) {
                             mostrarTexto("se ingresando un tipo de dato inconrrecto");
                     }
-
-                    comprobarUsuario= baseDeDatos.buscarUsuario(origen);
                         
                     if((validarIngreso(nombreEmpresa) || validarIngreso(tipoDeServicio) || validarIngreso(origen) || validarIngreso(destino) || validarIngreso(plazasTotales) || comprobarUsuario)){
                         validar = true;
-                       }
+                    }else{
+                        Servicio vuelo = new Vuelo(origen, destino, plazasTotales, plazasTotales, plazasTotales, tipoDeServicio, nombreEmpresa, tipoDeServicio);
+                        baseDeDatos.getServicio().add(vuelo);
+                    }
                 }
         }while(validar && opc2!=0);
     }
     //COMPLETAR . . . . . . . .  .
+    
+    private void bajaServicioVuelo(){}
+    
+    private void altaServicioHotel(){}
+    
+    private void bajaServicioHotel(){}
 }

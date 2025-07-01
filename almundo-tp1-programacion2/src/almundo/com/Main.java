@@ -16,9 +16,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ControlDeIngreso c = new ControlDeIngreso();
+        Sistema c = new Sistema();
 
-        c.ejecutar();
+        c.controlDeIngreso();
     }
     
 }
